@@ -1,7 +1,5 @@
 FROM python:3.8-slim
 
-WORKDIR /app
-
 # COPY requirements.txt ./
 # RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
@@ -14,6 +12,8 @@ RUN apt-get update && apt-get install -y \
 RUN useradd -m developer && echo "developer:developer" | chpasswd && adduser developer sudo
 
 USER developer
+
+WORKDIR /home/developer
 
 EXPOSE 80
 
